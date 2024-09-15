@@ -5,8 +5,6 @@ config:
   framework: drupal8
   id: 7ac5818b-0541-4f3d-943e-21ddf63f5723
   site: gitpod-demo
-  xdebug: false
-  index: true
-  edge: true
-  cache: true
   composer_version: "2.2.12"
+plugins:
+  "@lando/pantheon": "./../../"
