@@ -1,6 +1,6 @@
 # @format
 
-image: devwithlando/gitpod:1
+image: lando/standalone:latest
 
 tasks:
   - name: Setup Drupal
