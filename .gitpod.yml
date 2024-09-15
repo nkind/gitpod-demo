@@ -6,15 +6,12 @@ tasks:
   - name: Setup Drupal
     init: |
       lando start
-      lando composer require drush/drush
       lando composer install
       lando pull --auth "yawh7P9wReqTJebRM8xYhWXkX0roq1ZTeEh0EDe8YWJZE" --code=none --database=dev --rsync
     command: |
       lando rebuild -y
       gp preview $(gp url $(lando info --format=json | jq -r ".[0].urls[0]" | sed -e 's#http://localhost:\(\)#\1#'))
 ports:
-  - port: 3306
-    onOpen: ignore
   - port: 80
     onOpen: ignore
   - port: 443
