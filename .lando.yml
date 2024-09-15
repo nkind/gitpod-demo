@@ -1,5 +1,5 @@
 # @format
-
+name: gitpod-demo
 recipe: pantheon
 config:
   framework: drupal8
