@@ -8,7 +8,7 @@ tasks:
       lando init --source cwd --recipe pantheon --pantheon-auth "yawh7P9wReqTJebRM8xYhWXkX0roq1ZTeEh0EDe8YWJZE" --pantheon-site gitpod-demo
       lando start
       lando composer install
-      lando pull --code=none --database=dev --files=dev --rsync
+      lando pull --auth "yawh7P9wReqTJebRM8xYhWXkX0roq1ZTeEh0EDe8YWJZE" --code=none --database=dev --files=dev --rsync
     command: |
       lando rebuild -y
       gp preview $(gp url $(lando info --format=json | jq -r ".[0].urls[0]" | sed -e 's#http://localhost:\(\)#\1#'))
