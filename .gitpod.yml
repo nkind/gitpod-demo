@@ -1,0 +1,33 @@
+# @format
+
+image: devwithlando/gitpod:1
+
+tasks:
+  - name: Setup Drupal
+    init: |
+      lando start
+      lando composer require drush/drush
+      lando composer install
+      lando pull --code=none --database=dev --rsync
+    command: |
+      lando rebuild -y
+      gp preview $(gp url $(lando info --format=json | jq -r ".[0].urls[0]" | sed -e 's#http://localhost:\(\)#\1#'))
+ports:
+  - port: 3306
+    onOpen: ignore
+  - port: 80
+    onOpen: ignore
+  - port: 443
+    onOpen: ignore
+vscode:
+  extensions:
+    - felixfbecker.php-debug
+    - dbaeumer.vscode-eslint
+    - eamodio.gitlens
+    - EditorConfig.EditorConfig
+    - esbenp.prettier-vscode
+    - stylelint.vscode-stylelint
+    - tombonnike.vscode-status-bar-format-toggle
+    - usernamehw.errorlens
+    - mblode.twig-language
+    - skippednote.VS-code-drupal
